@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{e9b47fa0-2dd9-4a06-a213-52c4a675808a}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>diagnoseEngine.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId />
+    <Name>python-OBD-wifi</Name>
+    <IsWindowsApplication>False</IsWindowsApplication>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="docs\assets\extra.js" />
+    <Content Include="tox.ini" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="diagnoseEngine.py" />
+    <Compile Include="Interface\Connection.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Interface\Input.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Interface\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="obd\asynchronous.py" />
+    <Compile Include="obd\codes.py" />
+    <Compile Include="obd\commands.py" />
+    <Compile Include="obd\decoders.py" />
+    <Compile Include="obd\elm327.py" />
+    <Compile Include="obd\obd.py" />
+    <Compile Include="obd\OBDCommand.py" />
+    <Compile Include="obd\OBDResponse.py" />
+    <Compile Include="obd\protocols\protocol.py" />
+    <Compile Include="obd\protocols\protocol_can.py" />
+    <Compile Include="obd\protocols\protocol_legacy.py" />
+    <Compile Include="obd\protocols\protocol_unknown.py" />
+    <Compile Include="obd\protocols\__init__.py" />
+    <Compile Include="obd\UnitsAndScaling.py" />
+    <Compile Include="obd\utils.py" />
+    <Compile Include="obd\__init__.py" />
+    <Compile Include="obd\__version__.py" />
+    <Compile Include="setup.py" />
+    <Compile Include="tests\conftest.py" />
+    <Compile Include="tests\test_commands.py" />
+    <Compile Include="tests\test_decoders.py" />
+    <Compile Include="tests\test_OBD.py" />
+    <Compile Include="tests\test_OBDCommand.py" />
+    <Compile Include="tests\test_obdsim.py" />
+    <Compile Include="tests\test_protocol.py" />
+    <Compile Include="tests\test_protocol_can.py" />
+    <Compile Include="tests\test_protocol_legacy.py" />
+    <Compile Include="tests\test_uas.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="docs\" />
+    <Folder Include="docs\assets" />
+    <Folder Include="Interface\" />
+    <Folder Include="obd" />
+    <Folder Include="obd\protocols" />
+    <Folder Include="tests" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+</Project>
