@@ -43,14 +43,20 @@ from .utils import scan_serial, OBDStatus
 logger = logging.getLogger(__name__)
 
 
+
 class OBD(object):
     """
         Class representing an OBD-II connection
         with it's assorted commands/sensors.
     """
 
-    def __init__(self, addr=None, port=None, protocol=None, fast=True,
+    def __init__(self, addr=None, port=None,logLevel = 4, protocol=None, fast=True,
                  timeout=0.1, check_voltage=True, start_low_power=False):
+        
+        # First, setting appropriate logging level
+        logger.setLevel(logLevel)
+
+        # Initialize class variables 
         self.interface = None
         self.supported_commands = set(commands.base_commands())
         self.fast = fast  # global switch for disabling optimizations
@@ -58,8 +64,13 @@ class OBD(object):
         self.__last_command = b""  # used for running the previous command with a CR
         self.__last_header = ECU_HEADER.ENGINE  # for comparing with the previously used header
         self.__frame_counts = {}  # keeps track of the number of return frames for each command
-
+        
+        
+        # Trying to establish connection .
         logger.info("======================= python-OBD (v%s) =======================" % __version__)
+        logger.info("Trying to establish connection ... ")
+        logger.info("Time out is set to " + str(timeout))
+
         self.__connect(addr, port, protocol,
                        check_voltage, start_low_power)  # initialize by connecting and loading sensors
         self.__load_commands()  # try to load the car's supported commands
@@ -306,3 +317,6 @@ class OBD(object):
             cmd_string = b""
 
         return cmd_string
+
+    def getSupportedCmd(self): 
+        return self.supported_commands

@@ -379,7 +379,8 @@ class ELM327:
         if self.__port is not None:
             logger.info("closing port")
             self.__write(b"ATZ")
-            self.__port.close()
+            if(self.__port != None) :
+                self.__port.close()
             self.__port = None
 
     def send_and_parse(self, cmd):
