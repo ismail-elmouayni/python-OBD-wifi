@@ -19,7 +19,7 @@ class Canal(OBD):
         self.print_commands()
     
     def isEstablished(self) : 
-        return  self.status() == OBDStatus.OBD_CONNECTED
+        return not self.status() == OBDStatus.NOT_CONNECTED
 
 
    

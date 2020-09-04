@@ -26,6 +26,7 @@ else :
     queryMg.get("RPM")
     queryMg.get("SPEED")
     queryMg.get("INTAKE_PRESSURE") 
+    queryMg.get("MONITOR_EGR_B1")
 
     # Display diagnose codes 
     queryMg.get("GET_DTC")
