@@ -317,3 +317,6 @@ class OBD(object):
             cmd_string = b""
 
         return cmd_string
+
+    def getSupportedCmd(self): 
+        return self.supported_commands

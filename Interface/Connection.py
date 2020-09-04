@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from    obd import OBD
 from    obd import OBDStatus 
 import  obd as lib
@@ -7,24 +8,25 @@ import  obd as lib
 LINK_ADDRESS    ="192.168.0.10"
 LINK_PORT       = 35000
 
-class Canal(object):
+
+class Canal(OBD):
     """ description of class
-        class responsable of establishing connection 
-        with the carre and buiding quieries         """
+        class representing a connection canal 
+        with elm327 using OBD-II protocol """
         
     def __init__(self) : 
-        self._canal = lib.OBD(LINK_ADDRESS,LINK_PORT)
-        
+        super(Canal,self).__init__(LINK_ADDRESS,LINK_PORT)   
+        self.print_commands()
     
     def isEstablished(self) : 
-        return  self._canal.status() == OBDStatus.CAR_CONNECTED
+        return  self.status() == OBDStatus.OBD_CONNECTED
 
-    def status(self) : 
-        return self._canal.status()
 
-    def close(self) :
-        self._canal.close()
-        
+   
+
+
+
+
 
 
 
